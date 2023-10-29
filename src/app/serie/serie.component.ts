@@ -14,7 +14,8 @@ export class SerieComponent implements OnInit {
 
   constructor(private serieService: SerieService) { }
 
-  getSeries(){
+  // Function to fetch series and calculate the average number of seasons
+  getSeries() {
     this.serieService.getSeries().subscribe(series => {
       this.series = series;
       this.average = 0;
@@ -22,12 +23,12 @@ export class SerieComponent implements OnInit {
       series.forEach(serie => {
         this.average += serie.seasons;
       });
-      this.average /= series.length
+      this.average /= series.length;
     });
   }
 
   ngOnInit() {
+    // Call the getSeries function when the component is initialized
     this.getSeries();
   }
-
 }
